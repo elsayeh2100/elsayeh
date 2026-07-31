@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صفحة محمية</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Tahoma,Arial,sans-serif;
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.box{
+    background:#fff;
+    padding:30px;
+    width:350px;
+    border-radius:12px;
+    box-shadow:0 0 15px rgba(0,0,0,.15);
+    text-align:center;
+}
+h2{
+    margin-bottom:20px;
+}
+input{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    margin-bottom:15px;
+    box-sizing:border-box;
+}
+button{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    cursor:pointer;
+}
+#error{
+    color:red;
+    margin-top:15px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+    <h2>أدخل كلمة المرور</h2>
+
+    <input type="password" id="pass" placeholder="كلمة المرور">
+
+    <button onclick="checkPassword()">دخول</button>
+
+    <div id="error"></div>
+</div>
+
+<script>
+
+const PASSWORD="123456777";      // غيّر كلمة المرور هنا
+const LINK="https://drive.google.com/drive/folders/1tkV7vBmEtxN8-jFiIvw9hkkurIr1hBHw?usp=drive_link";   // ضع الرابط الذي تريد فتحه هنا
+
+function checkPassword(){
+
+    let p=document.getElementById("pass").value;
+
+    if(p===PASSWORD){
+        window.location.href=LINK;
+    }else{
+        document.getElementById("error").innerHTML="كلمة المرور غير صحيحة";
+    }
+
+}
+
+document.getElementById("pass").addEventListener("keypress",function(e){
+    if(e.key==="Enter"){
+        checkPassword();
+    }
+});
+
+</script>
+
+</body>
+</html>
